@@ -25,6 +25,8 @@ public class ItemReaderImpl implements ItemReader {
 
     @Override
     public List<ItemInfo.ItemOptionGroupInfo> getItemOptionSeries(Item item) {
+        // Aggregate Root : Item -> ItemOptionGroup -> ItemOption
+        // 루트를 통해서만 접근할 수 있게 했기 때문에 Item은 option group에 접근하기 위한 수단
         var itemOptionGroupList = item.getItemOptionGroupList();
         return itemOptionGroupList.stream()
                 .map(itemOptionGroup -> {
